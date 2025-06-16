@@ -6,6 +6,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
+import {
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
 const Header = () => {
   const active = false;
   const location = usePathname();
@@ -47,7 +54,18 @@ const Header = () => {
         <div
           className={styles.auth + " flex items-center justify-center gap-4"}
         >
-          <button className={styles.login}>Log In</button>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+
+          <SignedOut>
+            <SignInButton>
+              <button className={styles.login}>Log In</button>
+            </SignInButton>
+            <SignUpButton>
+              <button className={styles.signup}>Sign Up</button>
+            </SignUpButton>
+          </SignedOut>
           <button className={styles.menu} onClick={toggleMenu}>
             <MenuIcon />
           </button>
