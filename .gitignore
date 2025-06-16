@@ -42,3 +42,8 @@ next-env.d.ts
 
 
 src/app/globals.css
+
+# clerk configuration (can include secrets)
+/.clerk/
+
+.gitignore
