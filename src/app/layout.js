@@ -1,3 +1,4 @@
+import Footer from "@/components/footer/Footer";
 import "./globals.scss";
 import Header from "@/components/header/Header";
 
@@ -11,7 +12,14 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <Header />
-        <main>{children}</main>
+        <main
+          style={{
+            minHeight: "100vh",
+          }}
+        >
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );
