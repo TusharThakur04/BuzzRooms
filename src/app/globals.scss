@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #000000;
+  --background: #030b18;
   --foreground: #e6ecf0;
   --accent: #1d9bf0;
   --card: #16181c;
@@ -51,9 +51,5 @@ body {
 }
 
 a {
-  color: var(--accent);
   text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
 }
