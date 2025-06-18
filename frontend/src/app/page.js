@@ -22,12 +22,8 @@ const page = () => {
 
       console.log("Mirroring user:", userPayload);
 
-      // // Send user data to your Express backend
-      // await axios.post("http://localhost:8000/api/mirror-user", userPayload, {
-      //   // headers: {
-      //   //   Authorization: `Bearer ${token}`, // if your backend validates Clerk tokens
-      //   // },
-      // });
+      // Send user data to your Express backend
+      await axios.post("http://localhost:8000/login/", userPayload);
 
       // console.log("User mirrored successfully");
     } catch (error) {
