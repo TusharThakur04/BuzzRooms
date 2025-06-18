@@ -16,7 +16,7 @@ const page = () => {
       const userPayload = {
         clerkId: user.id,
         email: user.primaryEmailAddress?.emailAddress || "",
-        username: user.username,
+        username: user.firstName,
         image: user.imageUrl,
       };
 
