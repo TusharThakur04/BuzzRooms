@@ -8,10 +8,10 @@ export const mirrorUserToDB = async (req, res) => {
       return res.status(400).json({ error: "Missing required fields" });
     }
 
-    // Upsert: create if doesn't exist, do nothing if already exists
+    //mirror user to DB
     const user = await prisma.user.upsert({
       where: { clerkId },
-      update: {}, // can include updates later if needed
+      update: {},
       create: {
         clerkId,
         email,
