@@ -1,0 +1,31 @@
+.topTrendsSection {
+  margin-top: 2px;
+}
+
+.trendCard {
+  padding: 1rem 0;
+  background: linear-gradient(to bottom right, #0c1220, #161e2e, #0c1220);
+}
+
+.heading {
+  margin-bottom: 1rem;
+}
+.card {
+  background-color: #1e293b;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  color: white;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(104, 151, 170, 0.2);
+  }
+
+  .topic {
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+}

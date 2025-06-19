@@ -3,6 +3,7 @@ import { useUser } from "@clerk/nextjs";
 import { useEffect } from "react";
 import axios from "axios";
 import Welcome from "@/components/welcome/Welcome";
+import TopTrends from "@/components/topTrends/TopTrends";
 
 const page = () => {
   const { isSignedIn, user, isLoaded } = useUser();
@@ -44,6 +45,7 @@ const page = () => {
   return (
     <div>
       <Welcome />
+      <TopTrends />
     </div>
   );
 };
