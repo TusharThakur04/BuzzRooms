@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import Welcome from "@/components/welcome/Welcome";
 import TopTrends from "@/components/topTrends/TopTrends";
+import Features from "@/components/features/Features";
 
 const page = () => {
   const { isSignedIn, user, isLoaded } = useUser();
@@ -46,6 +47,7 @@ const page = () => {
     <div>
       <Welcome />
       <TopTrends />
+      <Features />
     </div>
   );
 };
