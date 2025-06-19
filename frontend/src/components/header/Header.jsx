@@ -58,14 +58,6 @@ const Header = () => {
             <UserButton />
           </SignedIn>
 
-          <SignedOut>
-            <SignInButton>
-              <button className={styles.login}>Log In</button>
-            </SignInButton>
-            <SignUpButton>
-              <button className={styles.signup}>Sign Up</button>
-            </SignUpButton>
-          </SignedOut>
           <button className={styles.menu} onClick={toggleMenu}>
             <MenuIcon />
           </button>
