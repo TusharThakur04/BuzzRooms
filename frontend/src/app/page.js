@@ -2,6 +2,7 @@
 import { useUser } from "@clerk/nextjs";
 import { useEffect } from "react";
 import axios from "axios";
+import Welcome from "@/components/welcome/Welcome";
 
 const page = () => {
   const { isSignedIn, user, isLoaded } = useUser();
@@ -40,7 +41,11 @@ const page = () => {
     return <div>Loading...</div>;
   }
 
-  return <div>Hey Sign up</div>;
+  return (
+    <div>
+      <Welcome />
+    </div>
+  );
 };
 
 export default page;
