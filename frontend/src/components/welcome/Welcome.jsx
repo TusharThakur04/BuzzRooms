@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Container } from "../common/container/Container";
 import styles from "./Welcome.module.scss";
 import AuthCard from "../authcard/AuthCard";
+import Link from "next/link";
 
 export default function Welcome() {
   const [showAuth, setShowAuth] = useState(false);
@@ -24,7 +25,10 @@ export default function Welcome() {
             >
               🔥 Join the Buzz
             </button>
-            <button className={styles.btnSecondary}>👀 Browse Rooms</button>
+
+            <button className={styles.btnSecondary}>
+              <Link href="/rooms">👀 Browse Rooms</Link>
+            </button>
           </div>
         </div>
       </section>
