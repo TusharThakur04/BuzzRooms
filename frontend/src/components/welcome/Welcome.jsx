@@ -1,7 +1,11 @@
+import { useState } from "react";
 import { Container } from "../common/container/Container";
 import styles from "./Welcome.module.scss";
+import AuthCard from "../authcard/AuthCard";
 
 export default function Welcome() {
+  const [showAuth, setShowAuth] = useState(false);
+
   return (
     <Container>
       <section className={`${styles.heroSection} flex justify-center w-full`}>
@@ -14,11 +18,18 @@ export default function Welcome() {
             No clutter. Just buzz.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <button className={styles.btnPrimary}>🔥 Join the Buzz</button>
+            <button
+              onClick={() => setShowAuth(true)}
+              className={styles.btnPrimary}
+            >
+              🔥 Join the Buzz
+            </button>
             <button className={styles.btnSecondary}>👀 Browse Rooms</button>
           </div>
         </div>
       </section>
+
+      {showAuth && <AuthCard onClose={() => setShowAuth(false)} />}
     </Container>
   );
 }

@@ -1,0 +1,52 @@
+.authCard {
+  background-color: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 1rem;
+  padding: 2rem;
+  color: white;
+  text-align: center;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  width: 90%;
+  max-width: 350px;
+  z-index: 50;
+
+  .title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+
+  .subtitle {
+    font-size: 0.95rem;
+    color: #94a3b8;
+    margin-bottom: 1.25rem;
+  }
+
+  .btn {
+    padding: 0.6rem 1.2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: 0.3s;
+  }
+
+  .signUpBtn {
+    background-color: #facc15;
+    color: black;
+    margin-right: 0.5rem;
+
+    &:hover {
+      background-color: #fde68a;
+    }
+  }
+
+  .signInBtn {
+    border: 1px solid #cbd5e1;
+    color: white;
+
+    &:hover {
+      background-color: white;
+      color: black;
+    }
+  }
+}
