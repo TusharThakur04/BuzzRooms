@@ -7,15 +7,11 @@ import Features from "@/components/features/Features";
 import { mirrorUser } from "@/lib/clerk/mirrorData";
 
 const page = () => {
-  const { isSignedIn, user, isLoaded } = useUser();
+  const { isSignedIn, user } = useUser();
 
   if (isSignedIn && user) {
     mirrorUser(user);
     return <div>Welcome, {user?.username || user?.firstName}!</div>;
-  }
-
-  if (!isLoaded) {
-    return <div>Loading...</div>;
   }
 
   return (
