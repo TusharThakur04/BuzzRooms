@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { fetchTrends } from "../controllers/fetchTrends";
+import { fetchTrends } from "../controllers/fetchTrends.js";
 
 const router = Router();
 
