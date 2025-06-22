@@ -2,6 +2,7 @@ import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
 import login from "./routes/login.js";
+import trends from "./routes/trends.js";
 import cors from "cors";
 
 const app = express();
@@ -16,6 +17,8 @@ app.use("/login", login);
 app.get("/", (req, res) => {
   res.send("buzzroom backend is running");
 });
+
+app.get("/trends", trends);
 
 app.listen(8000, () => {
   console.log("Server is running at http://localhost:8000");
