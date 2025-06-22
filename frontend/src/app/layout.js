@@ -3,6 +3,7 @@ import Footer from "@/components/footer/Footer";
 import "./globals.scss";
 import Header from "@/components/header/Header";
 import { ClerkProvider } from "@clerk/nextjs";
+import { AppProviders } from "./providers";
 
 const metadata = {
   title: "BuzzRooms",
@@ -14,15 +15,17 @@ export default function RootLayout({ children }) {
     <ClerkProvider>
       <html lang="en">
         <body>
-          <Header />
-          <main
-          // style={{
-          //   minHeight: "100vh",
-          // }}
-          >
-            {children}
-          </main>
-          <Footer />
+          <AppProviders>
+            <Header />
+            <main
+            // style={{
+            //   minHeight: "100vh",
+            // }}
+            >
+              {children}
+            </main>
+            <Footer />
+          </AppProviders>
         </body>
       </html>
     </ClerkProvider>
