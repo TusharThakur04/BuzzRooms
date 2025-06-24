@@ -59,22 +59,22 @@ const trendsSlice = createSlice({
   reducers: {},
   extraReducers(builder) {
     builder
-      .addCase(fetchAllShows.pending, (state) => {
-        state.isError.fetchAllShows = false;
-        state.isLoading.fetchAllShows = true;
-        state.isSuccess.fetchAllShows = false;
+      .addCase(fetchTrends.pending, (state) => {
+        state.isError.fetchTrends = false;
+        state.isLoading.fetchTrends = true;
+        state.isSuccess.fetchTrends = false;
       })
-      .addCase(fetchAllShows.rejected, (state, action) => {
+      .addCase(fetchTrends.rejected, (state, action) => {
         state.error = action.payload;
-        state.isError.fetchAllShows = true;
-        state.isLoading.fetchAllShows = false;
-        state.isSuccess.fetchAllShows = false;
+        state.isError.fetchTrends = true;
+        state.isLoading.fetchTrends = false;
+        state.isSuccess.fetchTrends = false;
       })
-      .addCase(fetchAllShows.fulfilled, (state, { payload }) => {
-        state.isError.fetchAllShows = false;
-        state.isLoading.fetchAllShows = false;
-        state.isSuccess.fetchAllShows = true;
-        state.shows = payload;
+      .addCase(fetchTrends.fulfilled, (state, { payload }) => {
+        state.isError.fetchTrends = false;
+        state.isLoading.fetchTrends = false;
+        state.isSuccess.fetchTrends = true;
+        state.trends = payload;
       });
   },
 });

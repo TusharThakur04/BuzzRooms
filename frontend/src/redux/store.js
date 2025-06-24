@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { combineReducers } from "@reduxjs/toolkit";
+import trendsReducer from "./slices/trendsSlice";
 
 const persistConfig = {
   key: "root",
@@ -9,9 +10,11 @@ const persistConfig = {
   storage,
 };
 
-const Rootreducer = combineReducers({});
+const rootreducer = combineReducers({
+  trends: trendsReducer,
+});
 
-const persistedReducer = persistReducer(persistConfig, Rootreducer);
+export const persistedReducer = persistReducer(persistConfig, rootreducer);
 
 export const store = configureStore({
   reducer: persistedReducer,
