@@ -20,7 +20,7 @@ export const fetchTrends = async (req, res) => {
     });
     console.log("Trends fetched:", trends);
 
-    res.json(trends.slice(0, 15));
+    res.json(trends.slice(0, 30));
   } catch (err) {
     console.error("Scraping failed", err);
     res.status(500).json({ error: "Failed to fetch trends" });

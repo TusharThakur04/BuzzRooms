@@ -18,9 +18,10 @@ export default function RootLayout({ children }) {
           <AppProviders>
             <Header />
             <main
-            // style={{
-            //   minHeight: "100vh",
-            // }}
+              style={{
+                // marginTop: "100px",
+                minHeight: "100vh",
+              }}
             >
               {children}
             </main>
