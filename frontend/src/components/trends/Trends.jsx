@@ -1,5 +1,6 @@
 import { Container } from "../common/container/Container";
 import styles from "./Trends.module.scss";
+import Link from "next/link";
 
 const Trends = ({ trends }) => {
   return (
@@ -17,7 +18,9 @@ const Trends = ({ trends }) => {
               <p
                 className={styles.trendSubtitle}
               >{`Active Buzzers: ${Math.floor(Math.random() * 120)}`}</p>
-              <button className={styles.joinBtn}>Join Room</button>
+              <Link href={`/rooms/${encodeURIComponent(trend.name)}`}>
+                <button className={styles.joinBtn}>Join Room</button>
+              </Link>
             </div>
           ))}
         </div>
