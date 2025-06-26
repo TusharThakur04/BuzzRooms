@@ -56,7 +56,11 @@ const initialState = {
 const trendsSlice = createSlice({
   name: "trends",
   initialState,
-  reducers: {},
+  reducers: {
+    cleanTrends: (state) => {
+      state.trends = [];
+    },
+  },
   extraReducers(builder) {
     builder
       .addCase(fetchTrends.pending, (state) => {
@@ -79,3 +83,4 @@ const trendsSlice = createSlice({
   },
 });
 export default trendsSlice.reducer;
+export const { cleanTrends } = trendsSlice.actions;
