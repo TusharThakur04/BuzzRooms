@@ -3,15 +3,12 @@ import React, { useState } from "react";
 import { Container } from "../common/container/Container";
 import styles from "./Header.module.scss";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import { SignedIn, UserButton } from "@clerk/nextjs";
 import useHeaderBackground from "../../hooks/hasBackground";
 const Header = () => {
   const active = useHeaderBackground();
-  const location = usePathname();
-  console.log("location", location);
 
   const [menuOpen, setMenuOpen] = useState(false);
 
