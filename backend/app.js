@@ -1,11 +1,15 @@
 import express from "express";
+import http from "http";
 import path from "path";
 import { fileURLToPath } from "url";
 import login from "./routes/login.js";
 import trends from "./routes/trends.js";
 import cors from "cors";
+import { Server } from "socket.io";
 
 const app = express();
+const server = http.createServer(app);
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -20,6 +24,34 @@ app.get("/", (req, res) => {
 
 app.use("/trends", trends);
 
-app.listen(8000, () => {
-  console.log("Server is running at http://localhost:8000");
+const io = new Server(server, {
+  cors: {
+    origin: "http://localhost:3000",
+    methods: ["GET", "POST"],
+  },
+});
+
+io.on("connection", (socket) => {
+  console.log("A user connected:", socket.id);
+
+  socket.on("join_room", (room) => {
+    socket.join(room);
+    console.log(`User ${socket.id} joined room: ${room}`);
+  });
+
+  socket.on("send_message", ({ room, message, sender }) => {
+    console.log(`Msg in ${room} from ${sender}: ${message}`);
+    io.to(room).emit("receive_message", {
+      message,
+      sender,
+    });
+  });
+
+  socket.on("disconnect", () => {
+    console.log("User disconnected:", socket.id);
+  });
+});
+
+server.listen(8000, () => {
+  console.log("Server running at http://localhost:8000");
 });
