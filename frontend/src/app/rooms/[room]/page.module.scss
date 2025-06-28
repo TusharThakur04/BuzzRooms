@@ -1,0 +1,114 @@
+.chatUi {
+  background: linear-gradient(to bottom right, #0c1220, #161e2e, #0c1220);
+}
+
+.chatHeader {
+  font-size: 1.3rem;
+  padding: 0.5% 2cqi;
+  height: 7vh;
+}
+
+.chat {
+  margin: 0.5rem 1rem;
+  height: 83vh;
+  padding: 1rem;
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  border: 1px solid #334155;
+}
+
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-right: 0.5rem;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #64748b #1e293b;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #64748b;
+    border-radius: 3px;
+  }
+}
+
+.message {
+  background-color: #334155;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  max-width: 75%;
+  color: #f8fafc;
+  align-self: flex-start;
+  animation: fadeIn 0.3s ease-in-out;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+// .ownMessage {
+//   background-color: #1e40af; // blue for your own messages
+//   align-self: flex-end;
+// }
+
+.sender {
+  font-weight: 600;
+  color: #94a3b8;
+  margin-right: 0.4rem;
+}
+
+.text {
+  color: #f1f5f9;
+  word-wrap: break-word;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.chatActions {
+  height: 8vh;
+  padding: 0 1rem;
+}
+
+.chatInputContainer {
+  min-width: 50vw;
+  padding: 0.5rem 1rem 0.5rem 0.5rem;
+  background-color: #1e293b;
+  border-radius: 0.5rem;
+}
+
+.chatInput {
+  padding: 6px;
+  border-radius: 10px;
+  border: 1px solid #334155;
+  min-width: 85%;
+}
+
+.sendButton {
+  background-color: #476197;
+  color: white;
+  height: 2rem;
+  width: 3rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #2e4175;
+  }
+}
