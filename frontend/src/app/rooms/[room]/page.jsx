@@ -55,11 +55,11 @@ export default function RoomPage() {
         <div
           className={`${styles.chatHeader} flex justify-between items-center`}
         >
-          <div>{room}</div>
-          <div>buzzers:</div>
-          <div>
-            <Link href="/rooms">go back</Link>
-          </div>
+          <div className={styles.roomName}>#{room}</div>
+          <div className={styles.buzzers}> Buzzers: N/A</div>
+          <Link href="/rooms">
+            <button className={styles.backButton}>← Back to Rooms</button>
+          </Link>
         </div>
 
         <div className={styles.chat}>
@@ -87,11 +87,14 @@ export default function RoomPage() {
           <div
             className={`${styles.chatInputContainer} flex items-center justify-between`}
           >
-            <input
+            <textarea
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               onKeyDown={(e) => {
-                if (e.key === "Enter") handleSend();
+                if (e.key === "Enter" && !e.shiftKey) {
+                  e.preventDefault();
+                  handleSend();
+                }
               }}
               type="text"
               placeholder="Type your message..."
