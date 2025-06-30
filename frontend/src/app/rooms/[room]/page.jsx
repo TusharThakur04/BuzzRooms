@@ -52,7 +52,7 @@ export default function RoomPage() {
       room,
       message,
       sender: sender.current,
-      user,
+      username,
     });
     setMessage("");
   };
@@ -80,7 +80,7 @@ export default function RoomPage() {
                   key={index}
                   className={`${styles.message} ${msg.sender === sender.current ? styles.ownMessage : ""}`}
                 >
-                  <span className={styles.sender}>{username}: </span>
+                  <span className={styles.sender}>{msg.username}: </span>
                   <span className={styles.text}>{msg.message}</span>
                 </div>
               ))}

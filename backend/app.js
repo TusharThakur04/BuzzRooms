@@ -39,11 +39,12 @@ io.on("connection", (socket) => {
     console.log(`User ${socket.id} joined room: ${room}`);
   });
 
-  socket.on("send_message", ({ room, message, sender }) => {
+  socket.on("send_message", ({ room, message, sender, username }) => {
     console.log(`Msg in ${room} from ${sender}: ${message}`);
     io.to(room).emit("receive_message", {
       message,
       sender,
+      username,
     });
   });
 
