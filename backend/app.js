@@ -7,6 +7,7 @@ import trends from "./routes/trends.js";
 import cors from "cors";
 import { Server } from "socket.io";
 import storeMsg from "./controllers/storingMsg.js";
+import fetchPrevMsgs from "./controllers/fetchPrevMsgs.js";
 
 const app = express();
 const server = http.createServer(app);
@@ -37,12 +38,22 @@ io.on("connection", (socket) => {
 
   socket.on("join_room", (room) => {
     socket.join(room);
+
+    // Fetch previous messages for the room
+
+    const message = fetchPrevMsgs(room);
+    if (message) {
+      socket.emit("previous_messages", message);
+    } else {
+      console.log(`No previous messages found for room: ${room}`);
+    }
+
     console.log(`User ${socket.id} joined room: ${room}`);
   });
 
   socket.on("send_message", ({ room, message, sender, username, clerkId }) => {
     console.log(`Msg in ${room} from ${sender}: ${message}`);
-    storeMsg(message, clerkId);
+    storeMsg(message, clerkId, room);
     io.to(room).emit("receive_message", {
       message,
       sender,

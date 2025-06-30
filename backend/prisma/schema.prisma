@@ -27,7 +27,7 @@ model Messages {
   id        String   @id @default(cuid())
   content   String
   timestamp DateTime @default(now())
-
+  room      String
   userId String
   user   User   @relation(fields: [userId], references: [id])
 }

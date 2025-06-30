@@ -1,5 +1,5 @@
 import prisma from "../lib/prisma.js";
-const storeMsg = async (message, clerkId) => {
+const storeMsg = async (message, clerkId, room) => {
   if (!message || !clerkId) {
     console.error("Missing required fields: message or clerkId");
     return;
@@ -20,6 +20,7 @@ const storeMsg = async (message, clerkId) => {
       data: {
         content: message,
         userId: user.id,
+        room,
       },
     });
     console.log("Message stored:", newMessage);
