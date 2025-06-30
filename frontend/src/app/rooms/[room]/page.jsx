@@ -5,7 +5,7 @@ import { useEffect, useState, useRef } from "react";
 import { useParams } from "next/navigation";
 import { io } from "socket.io-client";
 import { Container } from "@/components/common/container/Container";
-import { user } from "@clerk/nextjs";
+import { useUser } from "@clerk/nextjs";
 
 // Connect to socket
 const socket = io("http://localhost:8000");
@@ -19,6 +19,13 @@ export default function RoomPage() {
   const sender = useRef(`User-${Math.floor(Math.random() * 10000)}`); // mock sender
 
   const bottomRef = useRef(null);
+
+  const { user } = useUser();
+  const username =
+    user?.firstName ||
+    user?.lastName ||
+    user?.primaryEmailAddress?.emailAddress;
+  console.log("User:", username);
 
   useEffect(() => {
     socket.emit("join_room", room);
@@ -45,6 +52,7 @@ export default function RoomPage() {
       room,
       message,
       sender: sender.current,
+      user,
     });
     setMessage("");
   };
@@ -72,7 +80,7 @@ export default function RoomPage() {
                   key={index}
                   className={`${styles.message} ${msg.sender === sender.current ? styles.ownMessage : ""}`}
                 >
-                  <span className={styles.sender}>{msg.sender}: </span>
+                  <span className={styles.sender}>{username}: </span>
                   <span className={styles.text}>{msg.message}</span>
                 </div>
               ))}
