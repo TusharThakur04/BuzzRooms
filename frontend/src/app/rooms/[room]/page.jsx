@@ -25,7 +25,10 @@ export default function RoomPage() {
     user?.firstName ||
     user?.lastName ||
     user?.primaryEmailAddress?.emailAddress;
-  console.log("User:", username);
+
+  const clerkId = user?.id || "guest";
+
+  // console.log("User:", username);
 
   useEffect(() => {
     socket.emit("join_room", room);
@@ -53,6 +56,7 @@ export default function RoomPage() {
       message,
       sender: sender.current,
       username,
+      clerkId,
     });
     setMessage("");
   };

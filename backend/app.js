@@ -6,6 +6,7 @@ import login from "./routes/login.js";
 import trends from "./routes/trends.js";
 import cors from "cors";
 import { Server } from "socket.io";
+import storeMsg from "./controllers/storingMsg.js";
 
 const app = express();
 const server = http.createServer(app);
@@ -39,8 +40,9 @@ io.on("connection", (socket) => {
     console.log(`User ${socket.id} joined room: ${room}`);
   });
 
-  socket.on("send_message", ({ room, message, sender, username }) => {
+  socket.on("send_message", ({ room, message, sender, username, clerkId }) => {
     console.log(`Msg in ${room} from ${sender}: ${message}`);
+    storeMsg(message, clerkId);
     io.to(room).emit("receive_message", {
       message,
       sender,
