@@ -20,7 +20,10 @@ const Header = () => {
       <header
         className={`${active ? styles.headerShow : styles.header} flex items-center justify-between`}
       >
-        <div className={styles.logo}>BuzzRooms</div>
+        <div className={styles.logo}>
+          {" "}
+          <Link href="/">BuzzRooms</Link>{" "}
+        </div>
         <nav
           className={`${styles.navBar} ${
             menuOpen ? styles.navVisible : ""
