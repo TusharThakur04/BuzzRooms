@@ -26,16 +26,19 @@ const Header = () => {
         >
           <div
             className={`${location === "/" ? styles.active : ""} flex items-center justify-center`}
+            onClick={toggleMenu}
           >
             <Link href="/">Home</Link>
           </div>
           <div
             className={`${location === "/rooms" ? styles.active : ""} flex items-center justify-center`}
+            onClick={toggleMenu}
           >
             <Link href="/rooms">Rooms</Link>
           </div>
           <div
             className={`${location === "/about" ? styles.active : ""} flex items-center justify-center`}
+            onClick={toggleMenu}
           >
             <Link href="/about">About</Link>
           </div>

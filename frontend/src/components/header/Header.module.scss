@@ -3,7 +3,7 @@
 .header {
   position: fixed;
   height: 100px;
-  padding: 0 1%;
+  padding: 0 1.5%;
   width: 100vw;
 
   &Show {
@@ -20,12 +20,13 @@
 }
 .logo {
   font-family: "Permanent Marker", cursive;
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   font-weight: 100;
   font-style: normal;
 }
 .navBar {
   position: relative;
+  right: clamp(10px, 10vw, 90px);
   border: 3px solid rgb(53, 43, 43);
   background-color: rgb(15, 15, 15);
   height: 70%;
