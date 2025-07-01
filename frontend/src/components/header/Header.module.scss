@@ -46,16 +46,18 @@
     flex-direction: column;
     border-radius: 5px;
     right: 0;
-    top: 0;
+    top: 5px;
     height: 300px;
     width: 20%;
-    padding: 0.8rem 0;
+    padding: 2rem 0;
     transform: translateX(100%);
   }
 }
 
 .navVisible {
   @media (max-width: 960px) {
+    top: 5px;
+    right: 3px;
     transform: translateX(0%);
   }
 }
@@ -66,7 +68,7 @@
   width: 30%;
   @media (max-width: 960px) {
     height: 25%;
-    width: 40%;
+    width: 70px;
   }
 }
 

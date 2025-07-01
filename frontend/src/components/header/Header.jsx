@@ -7,8 +7,10 @@ import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import { SignedIn, UserButton } from "@clerk/nextjs";
 import useHeaderBackground from "../../hooks/hasBackground";
+import { usePathname } from "next/navigation";
 const Header = () => {
   const active = useHeaderBackground();
+  const location = usePathname();
 
   const [menuOpen, setMenuOpen] = useState(false);
 
