@@ -1,4 +1,5 @@
 import * as cheerio from "cheerio";
+import msgCleanup from "./msgCleanup.js";
 export const fetchTrends = async (req, res) => {
   try {
     const region = req.query.region || "india";
@@ -18,7 +19,11 @@ export const fetchTrends = async (req, res) => {
         name,
       });
     });
-    console.log("Trends fetched:", trends);
+    // console.log("Trends fetched:", trends);
+
+    // cleanup messages from the database
+
+    msgCleanup(trends);
 
     res.json(trends.slice(0, 30));
   } catch (err) {
