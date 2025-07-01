@@ -36,14 +36,15 @@ const io = new Server(server, {
 io.on("connection", (socket) => {
   console.log("A user connected:", socket.id);
 
-  socket.on("join_room", (room) => {
+  socket.on("join_room", async (room) => {
     socket.join(room);
 
     // Fetch previous messages for the room
 
-    const message = fetchPrevMsgs(room);
-    if (message) {
-      socket.emit("previous_messages", message);
+    const prevMessages = await fetchPrevMsgs(room);
+    if (prevMessages) {
+      io.to(room).emit("previous_messages", prevMessages);
+      console.log(`Previous messages for room ${room}:`, prevMessages);
     } else {
       console.log(`No previous messages found for room: ${room}`);
     }

@@ -16,7 +16,7 @@ const fetchPrevMsgs = async (room) => {
       },
     });
 
-    console.log("Fetched messages:", messages);
+    // console.log("Fetched messages:", messages);
     return messages;
   } catch (error) {
     console.error("Error fetching previous messages:", error);

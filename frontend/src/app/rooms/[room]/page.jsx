@@ -34,6 +34,20 @@ export default function RoomPage() {
     socket.emit("join_room", room);
     console.log(`Joined room: ${room}`);
 
+    socket.on("previous_messages", (prevMessages) => {
+      if (prevMessages && prevMessages.length > 0) {
+        setMessages(
+          prevMessages.map((msg) => ({
+            message: msg.content,
+            sender: msg.user.username,
+            username: msg.user.username,
+          }))
+        );
+      } else {
+        console.log(`No previous messages found for room: ${room}`);
+      }
+    });
+
     socket.on("receive_message", (data) => {
       setMessages((prev) => [...prev, data]);
     });
