@@ -23,7 +23,7 @@ export const fetchTrends = async (req, res) => {
 
     // cleanup messages from the database
 
-    msgCleanup(trends);
+    msgCleanup(trends.slice(0, 30));
 
     res.json(trends.slice(0, 30));
   } catch (err) {
