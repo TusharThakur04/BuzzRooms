@@ -16,6 +16,7 @@ export default function RoomPage() {
 
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
+
   const sender = useRef(`User-${Math.floor(Math.random() * 10000)}`); // mock sender
 
   const bottomRef = useRef(null);
@@ -60,7 +61,7 @@ export default function RoomPage() {
   //scroll to bottom
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    bottomRef.current?.scrollIntoView();
   }, [messages]);
 
   const handleSend = () => {
