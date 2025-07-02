@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Container } from "../common/container/Container";
 import styles from "./TopTrends.module.scss";
 import { useSelector } from "react-redux";
@@ -18,12 +19,17 @@ const TopTrends = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {topTrends.map((trend, index) => (
-                <div
+                <Link
+                  href={`/rooms/${encodeURIComponent(trend.name)}`}
                   key={index}
-                  className={`${styles.card} flex items-center justify-center flex-col`}
                 >
-                  <p className={styles.topic}>{trend.name}</p>
-                </div>
+                  <div
+                    key={index}
+                    className={`${styles.card} flex items-center justify-center flex-col`}
+                  >
+                    <p className={styles.topic}>{trend.name}</p>
+                  </div>
+                </Link>
               ))}
             </div>
           </div>
