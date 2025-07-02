@@ -51,6 +51,16 @@
     width: 20%;
     padding: 2rem 0;
     transform: translateX(100%);
+
+    @media screen and (max-width: 800px) {
+      width: 25%;
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .navBar {
+    width: 30vw;
   }
 }
 
