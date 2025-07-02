@@ -10,12 +10,17 @@ import storeMsg from "./controllers/storingMsg.js";
 import fetchPrevMsgs from "./controllers/fetchPrevMsgs.js";
 
 const app = express();
+const PORT = process.env.PORT || 8000;
 const server = http.createServer(app);
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-app.use(cors());
+if (process.env.NODE_ENV === "development") {
+  app.use(cors());
+} else {
+  app.use(cors({ origin: "https://buzz-rooms.vercel.app" }));
+}
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -28,7 +33,7 @@ app.use("/trends", trends);
 
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "https://buzz-rooms.vercel.app/",
     methods: ["GET", "POST"],
   },
 });
@@ -67,6 +72,6 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(8000, () => {
-  console.log("Server running at http://localhost:8000");
+server.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
