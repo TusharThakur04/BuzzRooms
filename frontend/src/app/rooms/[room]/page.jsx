@@ -8,7 +8,7 @@ import { Container } from "@/components/common/container/Container";
 import { useUser } from "@clerk/nextjs";
 
 // Connect to socket
-const socket = io("http://localhost:8000");
+const socket = io(`${process.env.NEXT_PUBLIC_API_URL}`);
 
 export default function RoomPage() {
   const { room: rawRoom } = useParams();

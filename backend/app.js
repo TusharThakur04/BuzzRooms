@@ -31,11 +31,22 @@ app.get("/", (req, res) => {
 
 app.use("/trends", trends);
 
-const io = new Server(server, {
-  cors: {
-    origin: "https://buzz-rooms.vercel.app/",
+let corsOptions = {};
+
+if (process.env.NODE_ENV === "development") {
+  corsOptions = {
+    origin: "http://localhost:3000",
     methods: ["GET", "POST"],
-  },
+  };
+} else {
+  corsOptions = {
+    origin: "https://buzz-rooms.vercel.app",
+    methods: ["GET", "POST"],
+  };
+}
+
+const io = new Server(server, {
+  cors: corsOptions,
 });
 
 io.on("connection", (socket) => {
