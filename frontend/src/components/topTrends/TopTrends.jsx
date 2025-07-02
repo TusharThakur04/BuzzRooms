@@ -1,8 +1,11 @@
 import { Container } from "../common/container/Container";
 import styles from "./TopTrends.module.scss";
+import { useSelector } from "react-redux";
 
 const TopTrends = () => {
-  const topics = ["random1", "random2", "random3", "random4"];
+  const trends = useSelector((state) => state.trends.trends);
+  const topTrends = trends.slice(0, 4);
+  console.log("Top Trends:", topTrends);
 
   return (
     <section className={styles.topTrendsSection}>
@@ -13,10 +16,13 @@ const TopTrends = () => {
               Top Trending Now
             </h2>
 
-            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {topics.map((topic, index) => (
-                <div key={index} className={styles.card}>
-                  <p className={styles.topic}>#{topic}</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {topTrends.map((trend, index) => (
+                <div
+                  key={index}
+                  className={`${styles.card} flex items-center justify-center flex-col`}
+                >
+                  <p className={styles.topic}>{trend.name}</p>
                 </div>
               ))}
             </div>
