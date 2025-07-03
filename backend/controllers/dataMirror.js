@@ -29,6 +29,7 @@ export const mirrorUserToDB = async (req, res) => {
     return res.status(200).json({ message: "User mirrored", user });
   } catch (error) {
     console.error("Error creating user:", error);
+    user;
     return res.status(500).json({ error: "Internal server error" });
   }
 };

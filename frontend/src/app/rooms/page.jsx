@@ -2,7 +2,7 @@
 import { fetchTrends } from "@/redux/slices/trendsSlice";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Loader from "@/components/common/container/loader/Loader";
+import { BeatLoader } from "react-spinners";
 import Trends from "@/components/trends/Trends";
 import { cleanTrends } from "@/redux/slices/trendsSlice";
 
@@ -25,7 +25,14 @@ const page = () => {
   }
 
   if (isLoading) {
-    return <Loader />;
+    return (
+      <div
+        style={{ minHeight: "100vh" }}
+        className="flex justify-center align items-center"
+      >
+        <BeatLoader color="#ebe2ec" />
+      </div>
+    );
   }
 
   return <Trends trends={trends} />;
