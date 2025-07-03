@@ -19,6 +19,14 @@ export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
       <html lang="en">
+        <head>
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Rubik+Spray+Paint&display=swap"
+            rel="stylesheet"
+          />
+        </head>
         <body>
           <AppProviders>
             {isChatRoom ? (
