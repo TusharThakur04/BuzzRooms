@@ -21,8 +21,7 @@ const Header = () => {
         className={`${active ? styles.headerShow : styles.header} flex items-center justify-between`}
       >
         <div className={styles.logo}>
-          {" "}
-          <Link href="/">BuzzRooms</Link>{" "}
+          <Link href="/">BuzzRooms</Link>
         </div>
         <nav
           className={`${styles.navBar} ${
