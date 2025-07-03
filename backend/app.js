@@ -16,11 +16,14 @@ const server = http.createServer(app);
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-if (process.env.NODE_ENV === "development") {
-  app.use(cors());
-} else {
-  app.use(cors({ origin: "https://buzz-rooms.vercel.app" }));
-}
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL,
+    methods: ["GET", "POST"],
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -31,22 +34,11 @@ app.get("/", (req, res) => {
 
 app.use("/trends", trends);
 
-let corsOptions = {};
-
-if (process.env.NODE_ENV === "development") {
-  corsOptions = {
-    origin: "http://localhost:3000",
-    methods: ["GET", "POST"],
-  };
-} else {
-  corsOptions = {
-    origin: "https://buzz-rooms.vercel.app",
-    methods: ["GET", "POST"],
-  };
-}
-
 const io = new Server(server, {
-  cors: corsOptions,
+  cors: {
+    origin: process.env.FRONTEND_URL,
+    methods: ["GET", "POST"],
+  },
 });
 
 io.on("connection", (socket) => {

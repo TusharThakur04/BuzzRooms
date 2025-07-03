@@ -12,7 +12,7 @@ export const mirrorUser = async (user) => {
     console.log("Mirroring user:", userPayload);
 
     // Send user data to your Express backend
-    await axios.post("http://localhost:8000/login/", userPayload);
+    await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/login`, userPayload);
   } catch (error) {
     console.error("Failed to mirror user:", error);
   }
