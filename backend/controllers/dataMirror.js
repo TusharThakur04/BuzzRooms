@@ -9,18 +9,23 @@ export const mirrorUserToDB = async (req, res) => {
     }
 
     //mirror user to DB
-    const user = await prisma.user.upsert({
-      where: { clerkId },
-      update: {},
-      create: {
-        clerkId,
-        email,
-        username,
-        image,
-      },
-    });
+    let user = await prisma.user.findUnique({ where: { clerkId } });
 
-    console.log("user stored:", username);
+    if (!user) {
+      user = await prisma.user.create({
+        data: {
+          clerkId,
+          email,
+          username,
+          image,
+        },
+      });
+      console.log("user stored:", user.username);
+    } else {
+      console.log("user exists:", user.username);
+    }
+    // Now `user` is always defined
+
     return res.status(200).json({ message: "User mirrored", user });
   } catch (error) {
     console.error("Error creating user:", error);
