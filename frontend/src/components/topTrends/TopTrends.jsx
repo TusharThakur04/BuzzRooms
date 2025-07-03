@@ -1,11 +1,18 @@
 import Link from "next/link";
 import { Container } from "../common/container/Container";
 import styles from "./TopTrends.module.scss";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { fetchTrends } from "@/redux/slices/trendsSlice";
 
 const TopTrends = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchTrends());
+  }, []);
   const trends = useSelector((state) => state.trends.trends);
   const topTrends = trends.slice(0, 4);
+  console.log(topTrends);
   console.log("Top Trends:", topTrends);
 
   return (
