@@ -40,6 +40,7 @@ io.on("connection", (socket) => {
 
   socket.on("join_room", async (room) => {
     socket.join(room);
+    console.log(`Joined room: ${room}`);
 
     // Fetch previous messages for the room
 

@@ -33,7 +33,6 @@ export default function RoomPage() {
 
   useEffect(() => {
     socket.emit("join_room", room);
-    console.log(`Joined room: ${room}`);
 
     socket.on("previous_messages", (prevMessages) => {
       if (prevMessages && prevMessages.length > 0) {
