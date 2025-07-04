@@ -2,6 +2,7 @@ import prisma from "../lib/prisma.js";
 
 const msgCleanup = async (trendingRooms) => {
   try {
+    console.log("fetching rooms to clean up");
     const rooms = await prisma.messages.findMany({
       distinct: ["room"],
       select: {
